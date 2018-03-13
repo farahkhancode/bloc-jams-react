@@ -70,9 +70,11 @@ handleSongClick(song) {
           <button>
              <span className="song-number">{(index+1) + ' '}</span>
           </button>
+
           <button>
              <span className="ion-play"></span>
           </button>
+
           <button>
              <span className="ion-pause"></span>
           </button>
