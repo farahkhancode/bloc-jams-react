@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
@@ -105,14 +104,14 @@ handleVolumeChange(e) {
     }
 
 
-formatTime(timeS){
-       const minutes = Math.floor(timeS / 60);
-       const seconds = Math.round(timeS - (minutes * 60));
-
-       if (typeof timeS === "number"){
-         return minutes + ":" + seconds
+formatTime(t){
+       const minutes = Math.floor(t / 60);
+       const seconds = Math.floor(t % 60);
+       const time = (minutes + ":" + (seconds>=10 ? seconds : "0" + seconds));
+       if (typeof t === "number" && t >=0){
+         return time
        }
-       else{
+       else {
          return "-:--"
        }
    }
@@ -164,7 +163,7 @@ formatTime(timeS){
            handleNextClick={() => this.handleNextClick()}
            handleTimeChange={(e) => this.handleTimeChange(e)}
            handleVolumeChange={(e) => this.handleVolumeChange(e)}
-           formatTime={(timeS) => this.formatTime(timeS)}
+           formatTime={(t) => this.formatTime(t)}
          />
       </section>
     );
