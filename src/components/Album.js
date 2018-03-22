@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import Ionicon from 'react-ionicons';
+
+
 
 
 class Album extends Component {
@@ -18,7 +20,8 @@ this.state = {
   currentTime: 0,
   duration: album.songs[0].duration,
   currentVolume: 0.5,
-  isPlaying: false
+  isPlaying: false,
+  isHovered:false
 };
 
 this.audioElement = document.createElement('audio');
@@ -105,17 +108,19 @@ handleVolumeChange(e) {
     }
 
 
-formatTime(timeS){
-       const minutes = Math.floor(timeS / 60);
-       const seconds = Math.round(timeS - (minutes * 60));
 
-       if (typeof timeS === "number"){
-         return minutes + ":" + seconds
+formatTime(t){
+       const minutes = Math.floor(t / 60);
+       const seconds = Math.floor(t % 60);
+       const time = (minutes + ":" + (seconds>=10 ? seconds : "0" + seconds));
+       if (typeof t === "number" && t >=0){
+         return time
        }
-       else{
+       else {
          return "-:--"
        }
    }
+
 
 
   render() {
@@ -129,7 +134,21 @@ formatTime(timeS){
          <div id="release-info">{this.state.album.releaseInfo}</div>
          </div>
        </section>
-       <table id="song-list">
+
+       <PlayerBar id="player-bar"
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+          currentTime={this.audioElement.currentTime}
+          duration={this.audioElement.duration}
+          currentVolume={this.audioElement.currentVolume}
+          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          handlePrevClick={() => this.handlePrevClick()}
+          handleNextClick={() => this.handleNextClick()}
+          handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
+          formatTime={(t) => this.formatTime(t)}
+        />
+       <table id="song-list" align="center" >
           <colgroup>
             <col id="song-number-column" />
             <col id="song-title-column" />
@@ -137,35 +156,29 @@ formatTime(timeS){
           </colgroup>
           <tbody className ="songs-list">
           { this.state.album.songs.map(( song, index ) =>
-          <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+          <tr className="song" key={index}
+          onClick={() => this.handleSongClick(song)}
+          onMouseEnter={() => this.setState({isHovered: index+1})}
+          onMouseLeave={() => this.setState({isHovered: false})}>
           <td className="song-actions">
-          <button>
-           <span className="song-number">{(index+1) + ' '}</span>
-           <span className="ion-play"></span>
-           <span className="ion-pause"></span>
+          <button id="song-action-buttons">
+          {(this.state.currentSong.title === song.title) ?
+          <span className={this.state.isPlaying ? "ion-pause" : "ion-play"}></span>
+          :
+          (this.state.isHovered === index+1) ?
+          <span className="ion-play"></span>
+          :
+          <span className="song-number">{index + 1}</span>
+                  }
           </button>
           </td>
           <td className="song-title">{song.title}</td>
           <td className="song-duration">{this.formatTime(song.duration)}</td>
           </tr>
-         )
+        )
        }
         </tbody>
         </table>
-
-        <PlayerBar
-           isPlaying={this.state.isPlaying}
-           currentSong={this.state.currentSong}
-           currentTime={this.audioElement.currentTime}
-           duration={this.audioElement.duration}
-           currentVolume={this.audioElement.currentVolume}
-           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-           handlePrevClick={() => this.handlePrevClick()}
-           handleNextClick={() => this.handleNextClick()}
-           handleTimeChange={(e) => this.handleTimeChange(e)}
-           handleVolumeChange={(e) => this.handleVolumeChange(e)}
-           formatTime={(timeS) => this.formatTime(timeS)}
-         />
       </section>
     );
   }
