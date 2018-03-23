@@ -2,8 +2,12 @@ import React from 'react';
 
 const Landing = () => (
   <section className="landing">
-  <h1 className="appname">Bloc Jams</h1>
-  <h1 className="hero-title">Turn the music up!</h1>
+  <div className="jumbotron jumbotron-fluid">
+  <div className="container">
+    <h1 className="appname">Bloc Jams</h1>
+    <p className="hero-title">Turn the music up!</p>
+  </div>
+</div>
 
   <section className="selling-points">
     <div className="point1">

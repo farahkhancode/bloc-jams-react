@@ -14,10 +14,7 @@ class App extends Component {
     return (
       <div className="App">
       <header>
-         <nav>
-            <Link to='/'>Landing</Link>
-            <Link to='/library'>Library</Link>
-        </nav>
+      <Navbar/>
       </header>
       <main>
       <Route exact path="/" component={Landing} />
