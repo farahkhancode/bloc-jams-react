@@ -106,10 +106,6 @@ handleVolumeChange(e) {
     }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> checkpoint-18-styling
 formatTime(t){
        const minutes = Math.floor(t / 60);
        const seconds = Math.floor(t % 60);
@@ -181,7 +177,6 @@ formatTime(t){
        }
         </tbody>
         </table>
-<<<<<<< HEAD
 
         <PlayerBar
            isPlaying={this.state.isPlaying}
@@ -196,8 +191,6 @@ formatTime(t){
            handleVolumeChange={(e) => this.handleVolumeChange(e)}
            formatTime={(t) => this.formatTime(t)}
          />
-=======
->>>>>>> checkpoint-18-styling
       </section>
     );
   }
