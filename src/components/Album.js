@@ -106,10 +106,6 @@ handleVolumeChange(e) {
     }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> checkpoint-18-styling
 formatTime(t){
        const minutes = Math.floor(t / 60);
        const seconds = Math.floor(t % 60);
