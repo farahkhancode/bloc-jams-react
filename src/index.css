@@ -1,6 +1,179 @@
+/* app.js*/
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: helvetica;
+  text-align:left;
+  background: linear-gradient(#e03c5a
+, #ffc3a0);
+
 }
 
+ .jumbotron {
+   background: white;
+   margin-top:20px;
+ }
+
+.badge {
+
+
+}
+
+input[type=range]{
+  display: inline;
+  width: auto;
+}
+
+/* landing.js */
+
+.navbar {
+    background: #4f4647;
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    padding-top:12px;
+}
+
+.library{
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+.appname{
+  padding-bttom:0px;
+  font-size: 70px;
+}
+
+h1.appname{
+  color:#4f4647;
+  font-family: impact;
+}
+
+.hero-title{
+  font-size: 18px;
+  font-style:italic;
+  padding-bottom: 10px;
+
+}
+
+.point-description{
+  padding: 5px;
+  color: white;
+}
+
+.selling-points{
+  font-size: 12px;
+
+}
+
+.point1{
+  padding: 54px;
+  border-bottom: 3px solid rgba(255,255,255,.25);
+}
+
+.point2{
+  padding: 54px;
+  border-bottom: 3px solid rgba(255,255,255,.25);
+}
+.point3{
+  padding: 54px;
+  border-bottom: 3px solid rgba(255,255,255,.25);
+}
+
+/* library.js */
+
+
+#custom-cover{
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  border-style: solid;
+  border-color:white;
+  border-width: 5px;
+}
+
+
+/* album.js */
+.song-duration{
+  align-content: right;
+}
+
+
+h1{
+font-size: 25px;
+margin-top: 20px;
+color: white;
+}
+
+h2{
+font-size: 18px;
+margin-top: 0px;
+color: white;
+}
+
+#release-info{
+font-size: 18 px;
+color: white;
+
+}
+td{
+  padding-right: 20px;
+  font-size: 18px;;
+}
+
+#album-info{
+
+}
+
+#song-list{
+text-align:center;
+background:white;
+padding-bottom: 50px;
+}
+
+#album-cover-art{
+
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  border-style: solid;
+  border-color:white;
+  border-width: 5px;
+  margin-top: 30px;
+}
+
+.list-group-item {
+    position: relative;
+    width: 500px;
+}
+
+
+
+.song-info{
+padding-top: 20px;
+padding-bottom: 20px;
+
+}
+
+
+.album-details{
+
+}
+
+
+
+.player-bar{
+
+
+}
+
+.song-actions{
+  font-size: 25px;
+}
+.song{
+  column-gap: 40px;
+  font-size: 25px;
+  padding-top:100px;
+  border-bottom: 3px solid rgba(255,255,255,.25);
+}

@@ -3,6 +3,7 @@ import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
 
+
 class Album extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,8 @@ this.state = {
   currentTime: 0,
   duration: album.songs[0].duration,
   currentVolume: 0.5,
-  isPlaying: false
+  isPlaying: false,
+  isHovered:false
 };
 
 this.audioElement = document.createElement('audio');
@@ -104,6 +106,10 @@ handleVolumeChange(e) {
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> checkpoint-18-styling
 formatTime(t){
        const minutes = Math.floor(t / 60);
        const seconds = Math.floor(t % 60);
@@ -117,40 +123,65 @@ formatTime(t){
    }
 
 
+
   render() {
     return (
+
       <section className="album">
       <section id="album-info">
           <img id="album-cover-art" src={this.state.album.albumCover} alt="coverimage" />
          <div className="album-details">
          <h1 id="album-title">{this.state.album.title}</h1>
          <h2 className="artist">{this.state.album.artist}</h2>
-         <div id="release-info">{this.state.album.releaseInfo}</div>
+         <div id="release-info" >{this.state.album.releaseInfo}</div>
          </div>
        </section>
-       <table id="song-list">
+
+       <PlayerBar id="player-bar"
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+          currentTime={this.audioElement.currentTime}
+          duration={this.audioElement.duration}
+          currentVolume={this.audioElement.currentVolume}
+          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          handlePrevClick={() => this.handlePrevClick()}
+          handleNextClick={() => this.handleNextClick()}
+          handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
+          formatTime={(t) => this.formatTime(t)}
+        />
+       <table id="song-list" align="center" className="table">
           <colgroup>
             <col id="song-number-column" />
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody className ="songs-list">
+          <tbody className ="list-group">
           { this.state.album.songs.map(( song, index ) =>
-          <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-          <td className="song-actions">
-          <button>
-           <span className="song-number">{(index+1) + ' '}</span>
-           <span className="ion-play"></span>
-           <span className="ion-pause"></span>
+          <tr className="song"  key={index}
+          onClick={() => this.handleSongClick(song)}
+          onMouseEnter={() => this.setState({isHovered: index+1})}
+          onMouseLeave={() => this.setState({isHovered: false})}>
+          <td className="song-actions" scope="row">
+          <button id="song-action-buttons" className="btn btn-light">
+          {(this.state.currentSong.title === song.title) ?
+          <span className={this.state.isPlaying ? "ion-pause" : "ion-play"}></span>
+          :
+          (this.state.isHovered === index+1) ?
+          <span className="ion-play"></span>
+          :
+          <span className="song-number">{index + 1}</span>
+                  }
           </button>
           </td>
           <td className="song-title">{song.title}</td>
           <td className="song-duration">{this.formatTime(song.duration)}</td>
           </tr>
-         )
+        )
        }
         </tbody>
         </table>
+<<<<<<< HEAD
 
         <PlayerBar
            isPlaying={this.state.isPlaying}
@@ -165,6 +196,8 @@ formatTime(t){
            handleVolumeChange={(e) => this.handleVolumeChange(e)}
            formatTime={(t) => this.formatTime(t)}
          />
+=======
+>>>>>>> checkpoint-18-styling
       </section>
     );
   }
