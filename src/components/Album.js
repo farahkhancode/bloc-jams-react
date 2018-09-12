@@ -121,6 +121,7 @@ formatTime(t){
 
 
   render() {
+
     return (
 
       <section className="album">
@@ -161,13 +162,8 @@ formatTime(t){
           <td className="song-actions" scope="row">
           <button id="song-action-buttons" className="btn btn-light">
           {(this.state.currentSong.title === song.title) ?
-          <span className={this.state.isPlaying ? "ion-pause" : "ion-play"}></span>
-          :
-          (this.state.isHovered === index+1) ?
-          <span className="ion-play"></span>
-          :
-          <span className="song-number">{index + 1}</span>
-                  }
+             <span className={this.state.isPlaying ? "ion-pause" : "ion-play"}></span>
+          :  (this.state.isHovered === index+1) ?    <span className="ion-play"></span>  :  <span className="song-number">{index + 1}</span>  }
           </button>
           </td>
           <td className="song-title">{song.title}</td>
@@ -177,7 +173,6 @@ formatTime(t){
        }
         </tbody>
         </table>
-<<<<<<< HEAD
 
         <PlayerBar
            isPlaying={this.state.isPlaying}
@@ -192,8 +187,7 @@ formatTime(t){
            handleVolumeChange={(e) => this.handleVolumeChange(e)}
            formatTime={(t) => this.formatTime(t)}
          />
-=======
->>>>>>> checkpoint-18-styling
+
       </section>
     );
   }

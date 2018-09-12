@@ -4,7 +4,7 @@ const Landing = () => (
   <section className="landing">
   <div className="jumbotron jumbotron-fluid">
   <div className="container">
-    <h1 className="appname">Bloc Jams</h1>
+    <h1 className="appname">Jamsbar</h1>
     <p className="hero-title">Turn the music up!</p>
   </div>
 </div>
