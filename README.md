@@ -1,5 +1,16 @@
-Jamsbar is a music app built with the ability to browse album covers and play, pause or skip songs.
+# Jamsbar 
+```
+  This is a music app built with the ability to browse album covers and play, pause or skip songs.
 
+```
+## Built With
+```
+React
 
-Made with React, React-DOM, React Router.
+React-DOM
+
+React Router
+
 Designed with Bootstrap.
+
+```
